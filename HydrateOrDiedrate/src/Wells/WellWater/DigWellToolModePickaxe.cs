@@ -24,7 +24,7 @@ namespace HydrateOrDiedrate.Wells.WellWater
         {
             this.api = api;
             base.OnLoaded(api);
-            bool xskillsEnabled = api.ModLoader.IsModEnabled("xskills");
+            bool xskillsEnabled = api.ModLoader.IsModEnabled("xskillsfork");
 
             if (!xskillsEnabled)
             {
@@ -150,7 +150,7 @@ namespace HydrateOrDiedrate.Wells.WellWater
 
         public override SkillItem[] GetToolModes(ItemSlot slot, IClientPlayer forPlayer, BlockSelection blockSel)
         {
-            if (api.ModLoader.IsModEnabled("xskills"))
+            if (api.ModLoader.IsModEnabled("xskillsfork"))
             {
                 return ObjectCacheUtil.TryGet<SkillItem[]>(api, "pickaxeToolModes");
             }
@@ -162,7 +162,7 @@ namespace HydrateOrDiedrate.Wells.WellWater
 
         public override void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSel, int toolMode)
         {
-            if (api.ModLoader.IsModEnabled("xskills"))
+            if (api.ModLoader.IsModEnabled("xskillsfork"))
             {
                 slot.Itemstack.Attributes.SetInt("toolMode", toolMode);
 
@@ -191,7 +191,7 @@ namespace HydrateOrDiedrate.Wells.WellWater
 
         public override int GetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSel)
         {
-            if (api.ModLoader.IsModEnabled("xskills"))
+            if (api.ModLoader.IsModEnabled("xskillsfork"))
             {
                 return slot.Itemstack.Attributes.GetInt("toolMode", 0);
             }
@@ -223,7 +223,7 @@ namespace HydrateOrDiedrate.Wells.WellWater
             if (blockSel == null || byEntity == null) return false;
 
             string modeName = "";
-            if (api.ModLoader.IsModEnabled("xskills"))
+            if (api.ModLoader.IsModEnabled("xskillsfork"))
             {
                 string code = itemslot.Itemstack.Attributes.GetString("toolModeCode", null);
                 int modeIndex = itemslot.Itemstack.Attributes.GetInt("toolMode", 0);
